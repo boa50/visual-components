@@ -1,0 +1,1 @@
+Visual components to be used by dashboards and data visualisations
