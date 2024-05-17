@@ -1,3 +1,7 @@
+export const logThing = txt => {
+    console.log('Hello', txt);
+}
+
 // Based on: https://www.geeksforgeeks.org/calculate-the-width-of-the-text-in-javascript/
 export const getTextWidth = (txt, fontSize = '1rem', fontWeight = 700) => {
     const text = document.createElement('span')
