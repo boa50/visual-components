@@ -8,5 +8,25 @@ export function createNumber({ }: {
     alignVertical: 'auto' | 'middle'
 }): Element
 
-export function logThing(txt: string): null;
+export function setNumberPosition(number: Element, x: number, y: number): null
+
+export function numberChangeValue({
+    number,
+    initial = 0,
+    end,
+    progress = 1,
+    transitionDuration = 50,
+    numberFormat = d3.format('.2f')
+}: {
+    number: Element,
+    initial: number,
+    end: number,
+    progress: number,
+    transitionDuration: number,
+    numberFormat: Function
+}): number
+
+
+
+
 export function adjustColours(g: any, colour: string, hideDomain: boolean): null;
