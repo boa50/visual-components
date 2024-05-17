@@ -122,3 +122,57 @@ export function addCircleLegend({ }: {
     textFormat?: Function,
     customId?: string
 }): null
+
+
+/*
+*   TOOLTIP
+*/
+export function addTooltip(
+    id: string,
+    htmlText: Function,
+    options?: { chartWidth: number, chartHeight: number }
+): { mouseover: Function, mousemove: Function, mouseleave: Function }
+
+export function addLineTooltip({ }: {
+    id?: string,
+    htmlText: Function,
+    colour: string,
+    chart?: Element,
+    data?: Array<Object>,
+    cx?: Function,
+    cy?: Function,
+    radius?: number,
+    chartWidth?: number,
+    chartHeight?: number
+}): { mouseover: Function, mousemove: Function, mouseleave: Function }
+
+export function removeLineTooltip(chart: Element): null
+
+export function addHighlightTooltip({ }: {
+    id?: string,
+    chart?: Element,
+    htmlText: Function,
+    elements: Array<Element>,
+    initialOpacity?: number,
+    highlightedOpacity?: number,
+    fadedOpacity?: number,
+    chartWidth?: number,
+    chartHeight?: number
+}): null
+
+export function addVerticalTooltip({ }: {
+    id?: string,
+    htmlText: Function,
+    chart: Element,
+    chartWidth: number,
+    chartHeight: number,
+    x: Function,
+    y: Function,
+    colour: string,
+    data: Array<Object>,
+    xVariable: string,
+    tooltipData: Object,
+    keyFunction: Function
+}): null
+
+export function removeVerticalTooltip(chart: Element): null
