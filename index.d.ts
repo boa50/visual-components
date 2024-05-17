@@ -1,29 +1,22 @@
 // animation/number.js
 export function createNumber({ }: {
     svg: Element,
-    x: number,
-    y: number,
-    textColour: string,
-    fontSize: string,
-    alignVertical: 'auto' | 'middle'
+    x?: number,
+    y?: number,
+    textColour?: string,
+    fontSize?: string,
+    alignVertical?: 'auto' | 'middle'
 }): Element
 
 export function setNumberPosition(number: Element, x: number, y: number): null
 
-export function numberChangeValue({
-    number,
-    initial = 0,
-    end,
-    progress = 1,
-    transitionDuration = 50,
-    numberFormat = d3.format('.2f')
-}: {
+export function numberChangeValue({ }: {
     number: Element,
-    initial: number,
+    initial?: number,
     end: number,
-    progress: number,
-    transitionDuration: number,
-    numberFormat: Function
+    progress?: number,
+    transitionDuration?: number,
+    numberFormat?: Function
 }): number
 
 
