@@ -42,6 +42,7 @@ export function showText(textNode: Element, progress?: number): null
 
 export function changeText(textNode: Element, htmlText: string): null
 
+
 /*
 *   AXIS
 */
@@ -49,16 +50,16 @@ export function adjustColours(g: Element, colour: string, hideDomain?: boolean):
 
 export function addAxis({ }: {
     chart: Element, height: number, width: number, colour?: string,
-    x?: Function, xLabel?: string, xFormat?: Function, xTickValues?: Array, xNumTicks?: number, xNumTicksForceInitial?: boolean, hideXdomain?: boolean,
-    y?: Function, yLabel?: string, yFormat?: Function, yTickValues?: Array, yNumTicks?: number, yNumTicksForceInitial?: boolean, hideYdomain?: boolean,
-    yRight?: Function, yRightLabel?: string, yRightFormat?: Function, yRightTickValues?: Array, yRightNumTicks?: number, yRightNumTicksForceInitial?: boolean
+    x?: Function, xLabel?: string, xFormat?: Function, xTickValues?: Array<any>, xNumTicks?: number, xNumTicksForceInitial?: boolean, hideXdomain?: boolean,
+    y?: Function, yLabel?: string, yFormat?: Function, yTickValues?: Array<any>, yNumTicks?: number, yNumTicksForceInitial?: boolean, hideYdomain?: boolean,
+    yRight?: Function, yRightLabel?: string, yRightFormat?: Function, yRightTickValues?: Array<any>, yRightNumTicks?: number, yRightNumTicksForceInitial?: boolean
 }): null
 
 export function updateXaxis({ }: {
     chart: Element,
     x: Function,
     format?: Function,
-    tickValues?: Array
+    tickValues?: Array<any>
 }): null
 
 export function updateYaxis({ }: {
@@ -66,4 +67,58 @@ export function updateYaxis({ }: {
     y: Function,
     format?: Function,
     hideDomain?: boolean
+}): null
+
+
+/*
+*   LEGEND
+*/
+export function addLegend({ }: {
+    chart: Element,
+    legends: Array<string>,
+    colours?: Array<string> | string,
+    shapes?: Array<string>,
+    xPosition?: number,
+    yPosition?: number,
+    fontSize?: string,
+    fontWeight?: number,
+    customId?: string
+}): null
+
+export function addVerticalLegend({ }: {
+    chart: Element,
+    legends: Array<string>,
+    colours?: Array<string> | string,
+    shapes?: Array<string>,
+    xPosition?: number,
+    yPosition?: number,
+    fontSize?: string,
+    fontWeight?: number,
+    customId?: string
+}): null
+
+export function addColourLegend({ }: {
+    chart: Element,
+    title: string,
+    colourScale: Element,
+    colourOpacity?: number,
+    xPosition?: number,
+    yPosition?: number,
+    width?: number,
+    axis: Function,
+    textColour?: string,
+    axisTickFormat?: Function,
+    customId?: string
+}): null
+
+export function addCircleLegend({ }: {
+    chart: Element,
+    sizeScale: Function,
+    valuesToShow: Array<number>,
+    xPosition?: number,
+    yPosition?: number,
+    colour?: string,
+    title?: string,
+    textFormat?: Function,
+    customId?: string
 }): null
