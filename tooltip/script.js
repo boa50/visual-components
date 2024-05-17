@@ -1,4 +1,6 @@
-export const addTooltip = (id, htmlText) => {
+import { getTransformTranslate } from "../utils.js"
+
+export const addTooltip = (id, htmlText, options = { chartWidth: 500, chartHeight: 500 }) => {
     const tooltip = d3.select(`#${id}`)
         .append('div')
         .style('opacity', 0)
@@ -9,6 +11,25 @@ export const addTooltip = (id, htmlText) => {
         .style('color', 'white')
         .style('position', 'fixed')
 
+
+    const getPosition = (event, axis) => {
+        const tooltipPadding = 15
+        const pointerPosition = d3.pointer(event)[axis === 'y' ? 1 : 0]
+        const transformPosition = d3.select(event.target).attr('transform') !== null ?
+            getTransformTranslate(d3.select(event.target).attr('transform'))[axis === 'y' ? 1 : 0] :
+            0
+        const eventPosition = Math.max(pointerPosition, transformPosition)
+
+        if (eventPosition >= (options[axis === 'y' ? 'chartHeight' : 'chartWidth'] / 2)) {
+            return event[axis] - tooltip.node().getBoundingClientRect()[axis === 'y' ? 'height' : 'width'] - tooltipPadding
+        } else {
+            return event[axis] + tooltipPadding
+        }
+    }
+
+    const xPosition = event => `${getPosition(event, 'x')}px`
+    const yPosition = event => `${getPosition(event, 'y')}px`
+
     const mouseover = (event, d) => {
         tooltip
             .interrupt('mouseleave')
@@ -16,14 +37,14 @@ export const addTooltip = (id, htmlText) => {
             .duration(200)
         tooltip
             .html(htmlText(d))
-            .style('left', `${event.x - 30}px`)
-            .style('top', `${event.y + 30}px`)
+            .style('left', xPosition(event))
+            .style('top', yPosition(event))
             .style('opacity', 1)
     }
     const mousemove = (event, d) => {
         tooltip
-            .style('left', `${event.x - 30}px`)
-            .style('top', `${event.y + 30}px`)
+            .style('left', xPosition(event))
+            .style('top', yPosition(event))
 
         if (d !== undefined) tooltip.html(htmlText(d))
     }
@@ -40,14 +61,26 @@ export const addTooltip = (id, htmlText) => {
     return { mouseover, mousemove, mouseleave }
 }
 
-export const addLineTooltip = (id, htmlText, colour, elements = {
-    chart: undefined,
-    data: undefined,
-    cx: undefined,
-    cy: undefined,
-    radius: 4
+export const addLineTooltip = ({
+    id,
+    htmlText,
+    colour,
+    chart,
+    data,
+    cx,
+    cy,
+    radius = 4,
+    chartWidth = 500,
+    chartHeight = 500
 }) => {
-    const { mouseover, mousemove, mouseleave } = addTooltip(id, htmlText)
+    if ((id === undefined) && (chart !== undefined))
+        id = `${chart.attr('id').split('-')[0]}-container`
+
+    const { mouseover, mousemove, mouseleave } = addTooltip(
+        id,
+        htmlText,
+        { chartWidth, chartHeight }
+    )
 
     const customMouseOver = function (event, d) {
         d3.select(this).attr('fill', colour)
@@ -58,16 +91,16 @@ export const addLineTooltip = (id, htmlText, colour, elements = {
         mouseleave(event, d)
     }
 
-    if (elements.chart !== undefined) {
-        elements.chart
+    if (chart !== undefined) {
+        chart
             .append('g')
             .attr('class', 'line-tooltip')
             .selectAll('.dot')
-            .data(elements.data)
+            .data(data)
             .join('circle')
-            .attr('cx', elements.cx)
-            .attr('cy', elements.cy)
-            .attr('r', elements.radius)
+            .attr('cx', cx)
+            .attr('cy', cy)
+            .attr('r', radius)
             .attr('stroke', 'transparent')
             .attr('stroke-width', 12)
             .attr('fill', 'transparent')
@@ -83,21 +116,33 @@ export const removeLineTooltip = chart => {
     chart.select('.line-tooltip').remove()
 }
 
-export const addHighlightTooltip = (
-    id, htmlText, elements,
-    opacity = {
-        initial: 0.75, highlighted: 1, faded: 0.25
-    }
-) => {
-    const { mouseover, mousemove, mouseleave } = addTooltip(id, htmlText)
+export const addHighlightTooltip = ({
+    id,
+    chart,
+    htmlText,
+    elements,
+    initialOpacity = 0.75,
+    highlightedOpacity = 1,
+    fadedOpacity = 0.25,
+    chartWidth = 500,
+    chartHeight = 500
+}) => {
+    if ((id === undefined) && (chart !== undefined))
+        id = `${chart.attr('id').split('-')[0]}-container`
+
+    const { mouseover, mousemove, mouseleave } = addTooltip(
+        id,
+        htmlText,
+        { chartWidth, chartHeight }
+    )
 
     const customMouseOver = function (event, d) {
-        elements.style('opacity', opacity.faded)
-        d3.select(this).style('opacity', opacity.highlighted)
+        elements.style('opacity', fadedOpacity)
+        d3.select(this).style('opacity', highlightedOpacity)
         mouseover(event, d)
     }
     const customMouseLeave = function (event, d) {
-        elements.style('opacity', opacity.initial)
+        elements.style('opacity', initialOpacity)
         mouseleave(event, d)
     }
 
@@ -133,15 +178,19 @@ export const addVerticalTooltip = ({
         .append('g')
         .attr('class', 'vertical-tooltip')
 
-    const { mouseover, mousemove, mouseleave } = addTooltip(id, htmlText)
+    const { mouseover, mousemove, mouseleave } = addTooltip(
+        id,
+        htmlText,
+        { chartWidth: width, chartHeight: height }
+    )
 
     const clearTooltips = () => {
         tooltips.selectAll('line').attr('stroke', 'transparent')
-        tooltips.selectAll('circle').attr('fill', 'transparent')
+        tooltips.selectAll('circle').attr('fill', 'transparent').attr('stroke', 'transparent')
     }
     const fillTooltips = key => {
         tooltips.selectAll(`.tooltip-line-${key}`).attr('stroke', colour)
-        tooltips.selectAll(`.tooltip-circle-${key}`).attr('fill', colour)
+        tooltips.selectAll(`.tooltip-circle-${key}`).attr('fill', colour).attr('stroke', 'white')
     }
 
     const customMouseOver = function (event) {

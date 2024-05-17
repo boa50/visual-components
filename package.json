@@ -1,8 +1,9 @@
 {
   "name": "visual-components",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "description": "Visual components to be used by dashboards and data visualisations",
   "main": "index.js",
+  "types": "index.d.ts",
   "keywords": [],
   "author": "boa50",
   "license": "ISC"
