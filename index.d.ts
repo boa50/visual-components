@@ -176,3 +176,34 @@ export function addVerticalTooltip({ }: {
 }): null
 
 export function removeVerticalTooltip(chart: Element): null
+
+
+/*
+*   UTILS
+*/
+export function getTextWidth(txt: string, fontSize?: number | string, fontWeight?: number): number
+
+export function getTransformTranslate(transform: string): [x: number, y: number]
+
+export function formatCurrency(value: number, decimals?: boolean): string
+
+export function formatDate(value: Date, year?: boolean, month?: boolean, day?: boolean): string
+
+export function getMargin({ }: {
+    left?: number,
+    right?: number,
+    top?: number,
+    bottom?: number
+}): { left: number, right: number, top: number, bottom: number }
+
+export function getChart({ }: {
+    id: string,
+    svgWidth?: number,
+    svgHeight?: number,
+    margin?: { left: number, right: number, top: number, bottom: number }
+}): {
+    chart: Element,
+    width: number,
+    height: number,
+    margin: { left: number, right: number, top: number, bottom: number }
+}
