@@ -8,7 +8,7 @@ export const adjustColours = (g, colour, hideDomain = false) => {
 }
 
 export const addAxis = ({
-    chart, height, width, colour = 'black',
+    chart, height, width, colour = 'black', fontSize = '0.8rem',
     x, xLabel = '', xFormat, xTickValues, xNumTicks, xNumTicksForceInitial = false, hideXdomain = false,
     y, yLabel = '', yFormat, yTickValues, yNumTicks, yNumTicksForceInitial = false, hideYdomain = false,
     yRight, yRightLabel = '', yRightFormat, yRightTickValues, yRightNumTicks, yRightNumTicksForceInitial = false
@@ -28,6 +28,7 @@ export const addAxis = ({
             format: xFormat,
             label: xLabel,
             hideDomain: hideXdomain,
+            fontSize,
             tickValues: xTickValues
         })
     }
@@ -47,6 +48,7 @@ export const addAxis = ({
             format: yFormat,
             label: yLabel,
             hideDomain: hideYdomain,
+            fontSize,
             tickValues: yTickValues
         })
     }
@@ -66,6 +68,7 @@ export const addAxis = ({
             format: yRightFormat,
             label: yRightLabel,
             hideDomain: hideYdomain,
+            fontSize,
             tickValues: yRightTickValues
         })
     }
@@ -138,7 +141,7 @@ function addSingleAxis({
     format,
     label,
     hideDomain,
-    tickFontSize = '0.8rem',
+    fontSize = '0.8rem',
     tickValues
 }) {
     let d3Axis, labelXposition, labelYposition, labelRotation, groupTransform
@@ -153,14 +156,14 @@ function addSingleAxis({
         case 'left':
             d3Axis = d3.axisLeft(scale)
             labelXposition = -(height / 2)
-            labelYposition = g => -(getTicksMaxWidth(g, format, tickFontSize) + 30)
+            labelYposition = g => -(getTicksMaxWidth(g, format, fontSize) + 30)
             labelRotation = 270
             groupTransform = `translate(0, 0)`
             break;
         case 'right':
             d3Axis = d3.axisRight(scale)
             labelXposition = height / 2
-            labelYposition = g => -(getTicksMaxWidth(g, format, tickFontSize) + 30)
+            labelYposition = g => -(getTicksMaxWidth(g, format, fontSize) + 30)
             labelRotation = 90
             groupTransform = `translate(${width}, 0)`
             break;
@@ -169,7 +172,7 @@ function addSingleAxis({
     chart
         .append('g')
         .attr('class', `${group}-axis-group`)
-        .style('font-size', tickFontSize)
+        .style('font-size', fontSize)
         .attr('transform', groupTransform)
         .call(
             d3Axis
@@ -185,6 +188,7 @@ function addSingleAxis({
                 .attr('y', labelYposition(g))
                 .attr('transform', `rotate(${labelRotation})`)
                 .attr('text-anchor', 'middle')
+                .style('font-size', fontSize)
                 .text(label)
         })
         .call(g => adjustColours(g, colour, hideDomain))

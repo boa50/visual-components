@@ -55,7 +55,7 @@ export function changeText(textNode: Element, htmlText: string): null
 export function adjustColours(g: Element, colour: string, hideDomain?: boolean): null
 
 export function addAxis({ }: {
-    chart: Element, height: number, width: number, colour?: string,
+    chart: Element, height: number, width: number, colour?: string, fontSize?: string,
     x?: Function, xLabel?: string, xFormat?: Function, xTickValues?: Array<any>, xNumTicks?: number, xNumTicksForceInitial?: boolean, hideXdomain?: boolean,
     y?: Function, yLabel?: string, yFormat?: Function, yTickValues?: Array<any>, yNumTicks?: number, yNumTicksForceInitial?: boolean, hideYdomain?: boolean,
     yRight?: Function, yRightLabel?: string, yRightFormat?: Function, yRightTickValues?: Array<any>, yRightNumTicks?: number, yRightNumTicksForceInitial?: boolean
