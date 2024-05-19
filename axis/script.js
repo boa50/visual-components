@@ -78,7 +78,8 @@ export const updateXaxis = ({
     chart,
     x,
     format = undefined,
-    tickValues = undefined
+    tickValues = undefined,
+    hideDomain = false
 }) => {
     const axisClass = '.x-axis-group'
     const transitionDuration = 250
@@ -95,7 +96,7 @@ export const updateXaxis = ({
                 .tickFormat(format)
                 .tickValues(tickValues)
         )
-        .call(g => adjustColours(g, colour))
+        .call(g => adjustColours(g, colour, hideDomain))
         .on('start', () => {
             axis
                 .selectAll('.tick')
@@ -111,6 +112,7 @@ export const updateYaxis = ({
     chart,
     y,
     format = undefined,
+    tickValues = undefined,
     hideDomain = false
 }) => {
     const colour = chart
@@ -126,6 +128,7 @@ export const updateYaxis = ({
                 .tickSize(0)
                 .tickPadding(10)
                 .tickFormat(format)
+                .tickValues(tickValues)
         )
         .call(g => adjustColours(g, colour, hideDomain))
 }

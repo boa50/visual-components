@@ -65,13 +65,15 @@ export function updateXaxis({ }: {
     chart: Element,
     x: Function,
     format?: Function,
-    tickValues?: Array<any>
+    tickValues?: Array<any>,
+    hideDomain?: boolean
 }): null
 
 export function updateYaxis({ }: {
     chart: Element,
     y: Function,
     format?: Function,
+    tickValues?: Array<any>,
     hideDomain?: boolean
 }): null
 
