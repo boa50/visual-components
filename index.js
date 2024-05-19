@@ -1,3 +1,4 @@
+export * from './html/slider/script.js'
 export * from './animation/number.js'
 export * from './animation/text.js'
 export * from './axis/script.js'

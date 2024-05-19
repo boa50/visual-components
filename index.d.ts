@@ -1,4 +1,10 @@
 /*
+*   HTML
+*/
+export function handleInputChange(e: Event): null
+
+
+/*
 *   ANIMATIION
 */
 // number.js
