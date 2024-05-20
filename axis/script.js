@@ -1,4 +1,4 @@
-import { getTextWidth, getTransformTranslate } from "../utils.js"
+import { getTextWidth, getTransformTranslate, convertSizeToIntPx } from "../utils.js"
 
 export const adjustColours = (g, colour, hideDomain = false) => {
     if (hideDomain) g.select('.domain').attr('stroke', 'transparent')
@@ -152,7 +152,7 @@ function addSingleAxis({
         case 'bottom':
             d3Axis = d3.axisBottom(scale)
             labelXposition = width / 2
-            labelYposition = () => 45
+            labelYposition = () => 7 + (convertSizeToIntPx(fontSize) * 2) + 8
             labelRotation = 0
             groupTransform = `translate(0, ${height})`
             break;

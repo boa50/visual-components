@@ -191,6 +191,8 @@ export function removeVerticalTooltip(chart: Element): null
 */
 export function getTextWidth(txt: string, fontSize?: number | string, fontWeight?: number): number
 
+export function convertSizeToIntPx(size: string): number
+
 export function getTransformTranslate(transform: string): [x: number, y: number]
 
 export function formatCurrency(value: number, decimals?: boolean): string
