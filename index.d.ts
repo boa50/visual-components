@@ -128,7 +128,9 @@ export function addCircleLegend({ }: {
     colour?: string,
     title?: string,
     textFormat?: Function,
-    customId?: string
+    customId?: string,
+    valuesFontSize?: string,
+    titleFontSize?: string
 }): null
 
 
