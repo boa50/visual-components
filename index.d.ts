@@ -230,7 +230,7 @@ export function getChart({ }: {
 }
 
 export function appendChartContainer({ }: {
-    idNum: number,
+    idNum?: number,
     chartTitle?: string,
     chartSubtitle?: string,
     outerContainerClass?: string,

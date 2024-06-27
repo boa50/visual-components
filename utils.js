@@ -138,7 +138,7 @@ export const getChart = ({
     return { chart, width, height, margin }
 }
 
-const appendChartContainer = ({
+export const appendChartContainer = ({
     idNum = 0,
     chartTitle,
     chartSubtitle,
