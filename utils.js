@@ -83,21 +83,21 @@ export const getChartDimensions = ({
 }) => {
     let width, height, scale
 
-    if (window.matchMedia("(max-width: 639px)").matches) {
-        width = sm.width
-        scale = sm.scale
-    } else if (window.matchMedia("(max-width: 767px)").matches) {
-        width = md.width
-        scale = md.scale
-    } else if (window.matchMedia("(max-width: 1279px)").matches) {
-        width = lg.width
-        scale = lg.scale
-    } else if (window.matchMedia("(max-width: 1535px)").matches) {
-        width = xl.width
-        scale = xl.scale
-    } else {
+    if (window.matchMedia("(min-width: 1536px)").matches) {
         width = xl2.width
         scale = xl2.scale
+    } else if (window.matchMedia("(min-width: 1280px)").matches) {
+        width = xl.width
+        scale = xl.scale
+    } else if (window.matchMedia("(min-width: 1024px)").matches) {
+        width = lg.width
+        scale = lg.scale
+    } else if (window.matchMedia("(min-width: 768px)").matches) {
+        width = md.width
+        scale = md.scale
+    } else {
+        width = sm.width
+        scale = sm.scale
     }
 
     height = width / scale
