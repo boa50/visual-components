@@ -76,7 +76,7 @@ export const getMargin = ({
 
 export const getChartDimensions = ({
     sm = { width: 420, scale: 1.45 },
-    md = { width: 420, scale: 1.45 },
+    md = { width: 700, scale: 1.9 },
     lg = { width: 700, scale: 1.9 },
     xl = { width: 622, scale: 1.9 },
     xl2 = { width: 875, scale: 1.9 }
