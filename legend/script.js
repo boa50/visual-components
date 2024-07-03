@@ -1,4 +1,4 @@
-import { getTextWidth } from "../utils.js"
+import { getTextWidth, convertSizeToIntPx } from "../utils.js"
 
 export const addLegend = ({
     chart,
