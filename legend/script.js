@@ -125,6 +125,7 @@ export const addColourLegend = ({
     chart,
     title,
     colourScale,
+    colourScaleType = 'default',
     colourOpacity = 1,
     xPosition = 0,
     yPosition = 0,
@@ -147,6 +148,8 @@ export const addColourLegend = ({
         .attr('font-size', 12)
         .text(title)
 
+    const interpolateInitialValue = colourScaleType === 'threshold' ? 1 / n : 0
+
     legend
         .append('image')
         .attr('x', 0)
@@ -154,7 +157,7 @@ export const addColourLegend = ({
         .attr('width', width)
         .attr('height', 13)
         .attr('preserveAspectRatio', 'none')
-        .attr('xlink:href', ramp(colourScale.copy().domain(d3.quantize(d3.interpolate(0, 1), n)), colourOpacity).toDataURL())
+        .attr('xlink:href', ramp(colourScale.copy().domain(d3.quantize(d3.interpolate(interpolateInitialValue, 1), n)), colourOpacity).toDataURL())
 
     legend
         .append('g')
