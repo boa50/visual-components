@@ -159,13 +159,15 @@ export const addColourLegend = ({
         .attr('preserveAspectRatio', 'none')
         .attr('xlink:href', ramp(colourScale.copy().domain(d3.quantize(d3.interpolate(interpolateInitialValue, 1), n)), colourOpacity).toDataURL())
 
+    const tickValues = colourScaleType === 'threshold' ? colourScale.domain().slice(0, n - 1) : colourScale.domain()
+
     legend
         .append('g')
         .attr('transform', 'translate(0, 25)')
         .call(
             d3
                 .axisBottom(axis)
-                .tickValues(colourScale.domain())
+                .tickValues(tickValues)
                 .tickSize(0)
                 .tickPadding(5)
                 .tickFormat(axisTickFormat)
