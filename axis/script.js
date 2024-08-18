@@ -132,6 +132,7 @@ export const updateYaxis = ({
 
     chart
         .select('.y-axis-group')
+        .transition('y-axis-change')
         .duration(transitionFix ? transitionDuration : 0)
         .call(
             d3
