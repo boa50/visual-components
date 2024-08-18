@@ -66,7 +66,8 @@ export function updateXaxis({ }: {
     x: Function,
     format?: Function,
     tickValues?: Array<any>,
-    hideDomain?: boolean
+    hideDomain?: boolean,
+    transitionFix?: boolean
 }): null
 
 export function updateYaxis({ }: {
@@ -74,7 +75,8 @@ export function updateYaxis({ }: {
     y: Function,
     format?: Function,
     tickValues?: Array<any>,
-    hideDomain?: boolean
+    hideDomain?: boolean,
+    transitionFix?: boolean
 }): null
 
 
