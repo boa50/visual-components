@@ -85,6 +85,7 @@ export function updateYaxis({ }: {
 */
 // RACE
 export function runRaceChart({ }: {
+    type: 'line' | 'area',
     chart: Element,
     data: Array<Object>,
     dateField?: string,

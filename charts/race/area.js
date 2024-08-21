@@ -1,4 +1,4 @@
-export const createAreaChart = (chart, x, y, areaAttrs) => {
+export const createAreaChart = (chart, x, y, customAttrs) => {
     let area = chart
         .selectAll('.data-point')
 
@@ -12,7 +12,7 @@ export const createAreaChart = (chart, x, y, areaAttrs) => {
         .data(stackedData)
         .join('path')
         .attr('class', 'data-point')
-        .call(area => areaAttrs(area))
+        .call(area => customAttrs(area))
         .call(
             area => area.attr('d', areaGenerator)
         )
