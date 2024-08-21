@@ -81,6 +81,48 @@ export function updateYaxis({ }: {
 
 
 /*
+*   CHARTS
+*/
+// RACE
+export function runRaceChart({ }: {
+    chart: Element,
+    data: Array<Object>,
+    dateField?: string,
+    yearField?: string,
+    isRankedData?: boolean,
+    x: Function,
+    y: Function,
+    updateAxis?: Function,
+    customAttrs?: Function,
+    addCustom?: Function
+}): null
+
+export function prepareRaceData({ }: {
+    data: Array<Object>,
+    dateField?: string,
+    yearField?: string,
+    isRankedData?: boolean,
+    k?: number,
+    n?: number
+}): null
+
+export function createAreaChart(
+    chart: Element,
+    x: Function,
+    y: Function,
+    areaAttrs?: Function
+): Function
+
+export function updateAreaChart(
+    updateArea: Function,
+    stackedData: Array<Object>,
+    updateAxis?: Function,
+    x: Function,
+    y: Function
+): null
+
+
+/*
 *   LEGEND
 */
 export function addLegend({ }: {
@@ -245,3 +287,17 @@ export function appendChartContainer({ }: {
     chartsContainerId?: string,
     theme?: 'light' | 'dark' | 'darkGradient'
 }): string
+
+
+export function getDateObject(
+    d: any,
+    isFullDateField: boolean
+): Date
+
+export function getBeginingYearDate(
+    year: number
+): Date
+
+export function getYearFromTime(
+    time: number
+): Date
