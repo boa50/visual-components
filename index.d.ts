@@ -117,7 +117,7 @@ export function createAreaChart(
 export function updateAreaChart(
     updateArea: Function,
     stackedData: Array<Object>,
-    updateAxis?: Function,
+    updateAxis: Function,
     x: Function,
     y: Function
 ): null

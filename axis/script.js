@@ -102,19 +102,20 @@ export const updateXaxis = ({
                 .tickValues(tickValues)
         )
         .call(g => adjustColours(g, colour, hideDomain))
-
-    if (transitionFix) {
-        axis
-            .on('start', () => {
-                axis
-                    .selectAll('.tick')
-                    .transition('x-axis-hide')
-                    .duration(transitionDuration * 0.1)
-                    .style('opacity', 0)
-            })
-            .end()
-            .then(() => { hideOverlappingTicks(axis, transitionDuration * 0.9) })
-    }
+        .call(g => {
+            if (transitionFix) {
+                g
+                    .on('start', () => {
+                        axis
+                            .selectAll('.tick')
+                            .transition('x-axis-hide')
+                            .duration(transitionDuration * 0.1)
+                            .style('opacity', 0)
+                    })
+                    .end()
+                    .then(() => { hideOverlappingTicks(axis, transitionDuration * 0.9) })
+            }
+        })
 }
 
 export const updateYaxis = ({
