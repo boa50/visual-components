@@ -275,7 +275,7 @@ export function convertSizeToIntPx(size: string): number
 
 export function getTransformTranslate(transform: string): [x: number, y: number]
 
-export function formatCurrency(value: number, decimals?: boolean): string
+export function formatCurrency(value: number, decimals?: boolean, significantDigits?: number): string
 
 export function formatDate(value: Date, year?: boolean, month?: boolean, day?: boolean): string
 

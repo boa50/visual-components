@@ -40,14 +40,17 @@ export const convertSizeToIntPx = size => {
 export const getTransformTranslate = transform =>
     transform.substring(transform.indexOf('(') + 1, transform.indexOf(')')).split(/[,]/).map(d => +d)
 
-export const formatCurrency = (value, decimals = false) =>
+export const formatCurrency = (value, decimals = false, significantDigits = 0) =>
     d3
         .formatLocale({
             thousands: ' ',
             grouping: [3],
             currency: ['$', '']
         })
-        .format(decimals ? '$,.2f' : '$,.0f')
+        .format(
+            decimals ? '$,.2f' :
+                significantDigits > 0 ? `$,.${significantDigits}s` :
+                    '$,.0f')
         (value)
 
 export const formatDate = (value, year = true, month = true, day = false) => {
