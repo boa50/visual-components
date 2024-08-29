@@ -1,4 +1,33 @@
 /*
+*   COLOURS
+*/
+export const colours: {
+    paletteLightBg: {
+        orange: string,
+        skyBlue: string,
+        bluishGreen: string,
+        amber: string,
+        blue: string,
+        vermillion: string,
+        reddishPurple: string,
+        axis: string,
+        contrasting: string
+    },
+    paletteDarkBg: {
+        orange: string,
+        skyBlue: string,
+        bluishGreen: string,
+        amber: string,
+        blue: string,
+        vermillion: string,
+        reddishPurple: string,
+        axis: string,
+        contrasting: string
+    }
+}
+
+
+/*
 *   HTML
 */
 export function handleInputChange(e: Event): null
