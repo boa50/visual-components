@@ -112,6 +112,26 @@ export function updateYaxis({ }: {
 /*
 *   CHARTS
 */
+// STATIC
+type LineChart = ({ }: {
+    chartProps: { chart: Object, width: number, height: number, margin: { left: number, right: number, top: number, bottom: number } },
+    data: Array<Object>,
+    theme?: 'light' | 'dark',
+    colour?: string,
+    xField: string,
+    yField: string,
+    x?: Function,
+    y?: Function,
+    axis?: Function,
+    strokeWidth?: number,
+    legend?: boolean,
+    tooltip?: boolean
+}) => { x: Function, y: Function }
+
+export function plot(): {
+    line: LineChart
+}
+
 // RACE
 export function runRaceChart({ }: {
     type: 'line' | 'area',
