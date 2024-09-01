@@ -140,6 +140,8 @@ export function runRaceChart({ }: {
     dateField?: string,
     yearField?: string,
     isRankedData?: boolean,
+    splitsPerStep?: number,
+    nRanks?: number,
     x: Function,
     y: Function,
     updateAxis?: Function,
