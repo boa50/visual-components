@@ -216,7 +216,7 @@ export const appendChartContainer = ({
                     .append('h3')
                     .attr('id', `${chartId}-title`)
                     .attr('class', titleClass)
-                    .text(chartTitle)
+                    .html(chartTitle)
                 : g
         )
         .call(g =>
@@ -225,7 +225,7 @@ export const appendChartContainer = ({
                     .append('h4')
                     .attr('id', `${chartId}-subtitle`)
                     .attr('class', subtitleClass)
-                    .text(chartSubtitle)
+                    .html(chartSubtitle)
                 : g
         )
         .call(g =>
