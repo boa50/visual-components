@@ -1,3 +1,4 @@
+// Patterns paths can be obtainer from https://pattern.monster/
 export const addPattern = (type, svg, scale = 1, colour = '#000000') => {
     let id = `${type}Pattern` + (svg.attr('id') !== undefined ? svg.attr('id') : Math.random())
     if (scale !== undefined) id += scale
