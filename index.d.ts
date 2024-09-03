@@ -28,6 +28,17 @@ export const colours: {
 
 
 /*
+*   PATTERNS
+*/
+export function addPattern(
+    type: 'diagonal' | 'wave' | 'cross' | 'triangle' | 'scales',
+    svg: Element,
+    scale?: number,
+    colour?: string
+): string
+
+
+/*
 *   HTML
 */
 export function handleInputChange(e: Event): null
