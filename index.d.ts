@@ -92,7 +92,7 @@ export function adjustColours(g: Element, colour: string, hideDomain?: boolean):
 
 export function addAxis({ }: {
     chart: Element, height: number, width: number, colour?: string, fontSize?: string,
-    x?: Function, xLabel?: string, xFormat?: Function, xTickValues?: Array<any>, xNumTicks?: number, xNumTicksForceInitial?: boolean, hideXdomain?: boolean, xTickPadding?: number,
+    x?: Function, xLabel?: string, xFormat?: Function, xTickValues?: Array<any>, xNumTicks?: number, xNumTicksForceInitial?: boolean, hideXdomain?: boolean, xTickPadding?: number, xTicksRotate?: boolean,
     y?: Function, yLabel?: string, yFormat?: Function, yTickValues?: Array<any>, yNumTicks?: number, yNumTicksForceInitial?: boolean, hideYdomain?: boolean, yTickPadding?: number,
     yRight?: Function, yRightLabel?: string, yRightFormat?: Function, yRightTickValues?: Array<any>, yRightNumTicks?: number, yRightNumTicksForceInitial?: boolean, yRightTickPadding?: number
 }): null
@@ -104,7 +104,8 @@ export function updateXaxis({ }: {
     tickValues?: Array<any>,
     hideDomain?: boolean,
     transitionFix?: boolean,
-    label?: string
+    label?: string,
+    rotate?: boolean
 }): null
 
 export function updateYaxis({ }: {

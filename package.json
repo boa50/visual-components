@@ -1,6 +1,6 @@
 {
   "name": "visual-components",
-  "version": "0.2.8",
+  "version": "0.2.9",
   "description": "Visual components to be used by dashboards and data visualisations",
   "main": "index.js",
   "types": "index.d.ts",
