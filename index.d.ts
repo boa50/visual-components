@@ -146,16 +146,10 @@ export function plot(): {
 export function runRaceChart({ }: {
     type: 'line' | 'area',
     chart: Element,
-    data: Array<Object>,
-    dateField?: string,
-    yearField?: string,
-    isRankedData?: boolean,
-    splitsPerStep?: number,
-    nRanks?: number,
+    raceData: { keyframes: Array<Object>, prev: Map, next: Map, groups: Set<String> },
     x: Function,
     y: Function,
-    updateAxis?: Function,
-    customAttrs?: Function,
+    updateChart: Function,
     addCustom?: Function
 }): null
 
@@ -166,7 +160,7 @@ export function prepareRaceData({ }: {
     isRankedData?: boolean,
     k?: number,
     n?: number
-}): null
+}): { keyframes: Array<Object>, prev: Map, next: Map, groups: Set<String> }
 
 export function createAreaChart(
     chart: Element,
