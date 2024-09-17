@@ -80,9 +80,15 @@ export function createText({ }: {
 
 export function hideText(textNode: Element, progress?: number): null
 
+export function hideTextTransition(textNode: Element, duration?: number, transitionName?: string): Element
+
 export function showText(textNode: Element, progress?: number): null
 
+export function showTextTransition(textNode: Element, duration?: number, transitionName?: string): Element
+
 export function changeText(textNode: Element, htmlText: string): null
+
+export function changeTextTransition(textNode: Element, htmlText: string, duration?: number, transitionName?: string): null
 
 
 /*
